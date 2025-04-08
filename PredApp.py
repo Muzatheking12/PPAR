@@ -16,6 +16,7 @@ import xgboost
 from sklearn.metrics import r2_score, mean_squared_error, matthews_corrcoef, accuracy_score, confusion_matrix
 from rdkit.Chem import Descriptors
 from rdkit.ML.Descriptors import MoleculeDescriptors
+from streamlit_ketcher import st_ketcher
 
 
 
@@ -65,13 +66,15 @@ tab0 ,tab1, tab2, tab3, tab4, tab5 = st.tabs(['Predict' , 'About', 'Dataset', 'M
 
 
 with tab0:
+    st.write("Draw Your Structure and Click on Apply to Generate SMILES")
+    SMI = st_ketcher()
     st.write("""### Instructions""")
     st.write('- *Input **SMILES** in the Sidebar* ')
     with open(std, 'r') as file:
         content = file.read()
     st.write(f'- *Press Confirm Button To Generate Predicted **{content}** value*')
     st.write("""## Output""")
-    SMILES_input = st.sidebar.text_input(' **Enter Your SMILES Below** ', 'c1ccccc1')
+    SMILES_input = st.sidebar.text_input(' **Enter Your SMILES Below** ', SMI)
     button = st.sidebar.button('Confirm')
     st.sidebar.title('*Input Excel Sheet*')
     uploaded_file = st.sidebar.file_uploader("Upload Excel Sheet For Multiple Molecule Processing\n Headers -> ['SMILES']", type=["xlsx"])
