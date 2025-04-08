@@ -66,7 +66,7 @@ tab0 ,tab1, tab2, tab3, tab4, tab5 = st.tabs(['Predict' , 'About', 'Dataset', 'M
 
 
 with tab0:
-    st.write("Draw Your Structure and Click on Apply to Generate SMILES")
+    st.write(" - Draw Your Structure and Click on Apply to Generate SMILES")
     SMI = st_ketcher()
     st.write("""### Instructions""")
     st.write('- *Input **SMILES** in the Sidebar* ')
